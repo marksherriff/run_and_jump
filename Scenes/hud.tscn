@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2xw3fe4lhu3s"]
+
+[ext_resource type="FontFile" uid="uid://bbo7gfb745ed6" path="res://Assets/Fonts/PressStart2P-vaV7.ttf" id="1_dqg1s"]
+[ext_resource type="Script" uid="uid://dbdegtsvxhi60" path="res://Scenes/hud.gd" id="1_h48wk"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_h48wk")
+
+[node name="CoinLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_dqg1s")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

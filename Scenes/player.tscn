@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpvsue2h17dvo"]
+
+[ext_resource type="Script" uid="uid://drk6vokgqaht0" path="res://Scenes/player.gd" id="1_bb08q"]
+[ext_resource type="Texture2D" uid="uid://3dghkahjchoo" path="res://Assets/Sprites/heroes/scarfgirl/fall.png" id="1_wm8jl"]
+[ext_resource type="Texture2D" uid="uid://b3jn8b5s7y527" path="res://Assets/Sprites/heroes/scarfgirl/hero_ouch.png" id="2_ir6ha"]
+[ext_resource type="Texture2D" uid="uid://dt4dqxivs010" path="res://Assets/Sprites/heroes/scarfgirl/hero_idle1.png" id="3_cydu5"]
+[ext_resource type="Texture2D" uid="uid://crlwn6ts4ja38" path="res://Assets/Sprites/heroes/scarfgirl/hero_idle2.png" id="4_mcbif"]
+[ext_resource type="Texture2D" uid="uid://dr1u71cr253qr" path="res://Assets/Sprites/heroes/scarfgirl/hero_idle3.png" id="5_v0dr0"]
+[ext_resource type="Texture2D" uid="uid://bro1dgcjcpx8" path="res://Assets/Sprites/heroes/scarfgirl/hero_jump.png" id="6_bbyi6"]
+[ext_resource type="Texture2D" uid="uid://2q1327jwou2n" path="res://Assets/Sprites/heroes/scarfgirl/hero_run1.png" id="7_5yv3n"]
+[ext_resource type="Texture2D" uid="uid://cgwi1d5dxnjqe" path="res://Assets/Sprites/heroes/scarfgirl/hero_run2.png" id="8_6n8f6"]
+[ext_resource type="Texture2D" uid="uid://bfrhoqlna38km" path="res://Assets/Sprites/heroes/scarfgirl/hero_run3.png" id="9_1mrvj"]
+[ext_resource type="Texture2D" uid="uid://xe3g63gw0i06" path="res://Assets/Sprites/heroes/scarfgirl/hero_run4.png" id="10_2v5o6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eaqd7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wm8jl")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ir6ha")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cydu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mcbif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v0dr0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bbyi6")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5yv3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6n8f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1mrvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2v5o6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uhjg"]
+size = Vector2(12, 16)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_mask = 6
+script = ExtResource("1_bb08q")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_eaqd7")
+animation = &"run"
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_5uhjg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="coin_collected" from="." to="." method="_on_coin_collected"]
